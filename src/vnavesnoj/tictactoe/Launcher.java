@@ -16,6 +16,8 @@
 
 package vnavesnoj.tictactoe;
 
+import vnavesnoj.tictactoe.component.*;
+
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com

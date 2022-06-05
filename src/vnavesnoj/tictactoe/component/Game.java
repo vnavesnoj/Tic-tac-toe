@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe;
+package vnavesnoj.tictactoe.component;
+
+import vnavesnoj.tictactoe.model.GameTable;
 
 import java.util.Random;
 

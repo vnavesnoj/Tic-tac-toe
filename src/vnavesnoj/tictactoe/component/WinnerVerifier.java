@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe;
+package vnavesnoj.tictactoe.component;
+
+import vnavesnoj.tictactoe.model.GameTable;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class DrowVerifier {
+public class WinnerVerifier {
 
-    public boolean isDraw(final GameTable gameTable) {
+    public boolean isUserWinner(final GameTable gameTable) {
+        return false;
+    }
+
+    public boolean isComputerWinner(final GameTable gameTable) {
         return false;
     }
 }

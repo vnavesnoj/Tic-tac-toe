@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe;
+package vnavesnoj.tictactoe.component;
+
+import vnavesnoj.tictactoe.model.GameTable;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class GameTable {
+public class ComputerTurn {
+
+    public void makeMove(final GameTable gameTable) {
+
+    }
 }
