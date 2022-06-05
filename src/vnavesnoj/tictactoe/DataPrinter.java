@@ -20,11 +20,13 @@ package vnavesnoj.tictactoe;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public final class Launcher {
+public class DataPrinter {
 
-    public static void main(final String[] args) {
-        Game game = new Game(
-                new DataPrinter(), new ComputerTurn(), new UserTurn(), new WinnerVerifier(), new DrowVerifier());
-        game.play();
+    public void printMappingTable() {
+
+    }
+
+    public void printGameTable(final GameTable gameTable) {
+
     }
 }
