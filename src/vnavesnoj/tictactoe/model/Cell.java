@@ -38,4 +38,12 @@ public class Cell {
     public int getRow() {
         return row;
     }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "col=" + col +
+                ", row=" + row +
+                '}';
+    }
 }
