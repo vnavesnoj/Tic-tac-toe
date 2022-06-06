@@ -20,23 +20,22 @@ package vnavesnoj.tictactoe.model;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class GameTable {
+public class Cell {
 
-    private final char[][] table = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
-    };
+    private final int col;
 
-    public boolean isEmpty(final Cell cell) {
-        return table[cell.getRow()][cell.getCol()] == ' ';
+    private final int row;
+
+    public Cell(final int col, final int row) {
+        this.col = col;
+        this.row = row;
     }
 
-    public char getSign(final Cell cell) {
-        return table[cell.getRow()][cell.getCol()];
+    public int getCol() {
+        return col;
     }
 
-    public void setSign(final Cell cell, char sign) {
-        table[cell.getRow()][cell.getCol()] = sign;
+    public int getRow() {
+        return row;
     }
 }
