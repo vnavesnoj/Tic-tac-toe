@@ -16,6 +16,7 @@
 
 package vnavesnoj.tictactoe.component;
 
+import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
 
 /**
@@ -25,10 +26,23 @@ import vnavesnoj.tictactoe.model.GameTable;
 public class DataPrinter {
 
     public void printMappingTable() {
-
+        System.out.println("-------------");
+        System.out.println("| 7 | 8 | 9 |");
+        System.out.println("-------------");
+        System.out.println("| 4 | 5 | 6 |");
+        System.out.println("-------------");
+        System.out.println("| 1 | 2 | 3 |");
+        System.out.println("-------------");
     }
 
     public void printGameTable(final GameTable gameTable) {
-
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int k = 0; k < 3; k++) {
+                System.out.print("| " + gameTable.getSign(new Cell(i, k)) + " ");
+            }
+            System.out.println("|");
+        }
+        System.out.println("-------------");
     }
 }
