@@ -16,7 +16,10 @@
 
 package vnavesnoj.tictactoe.component;
 
+import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
+
+import java.util.Random;
 
 /**
  * @author vnavesnoj
@@ -25,6 +28,14 @@ import vnavesnoj.tictactoe.model.GameTable;
 public class ComputerTurn {
 
     public void makeMove(final GameTable gameTable) {
-
+        final Random random = new Random();
+        while (true) {
+            final int randomNumber = random.nextInt(9);
+            final Cell cell = new Cell(2 - (randomNumber / 3), randomNumber % 3);
+            if (gameTable.isEmpty(cell)) {
+                gameTable.setSign(cell, 'O');
+                return;
+            }
+        }
     }
 }
