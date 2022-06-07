@@ -16,7 +16,10 @@
 
 package vnavesnoj.tictactoe.component;
 
+import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
+
+import java.util.Scanner;
 
 /**
  * @author vnavesnoj
@@ -25,6 +28,28 @@ import vnavesnoj.tictactoe.model.GameTable;
 public class UserTurn {
 
     public void makeMove(final GameTable gameTable) {
+        while (true) {
+            System.out.println("Please type number between 1 and 9: ");
+            Cell cell = getUserInput();
+            if (cell != null) {
+                if (gameTable.isEmpty(cell)) {
+                    gameTable.setSign(cell, 'X');
+                    return;
+                }
+                System.out.println("Can't make a move, because the cell is not free! Try again!");
+            }
+        }
+    }
 
+
+    private Cell getUserInput() {
+        final String enter = new Scanner(System.in).nextLine();
+        if (enter.length() == 1) {
+            if (enter.charAt(0) >= '1' && enter.charAt(0) <= '9') {
+                final int enteredNumber = Integer.parseInt(enter);
+                return new Cell((2 - ((enteredNumber - 1) / 3)), (enteredNumber - 1) % 3);
+            }
+        }
+        return null;
     }
 }
