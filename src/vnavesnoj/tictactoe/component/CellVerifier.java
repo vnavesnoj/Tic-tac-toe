@@ -23,9 +23,9 @@ import vnavesnoj.tictactoe.model.GameTable;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class DrawVerifier {
+public class CellVerifier {
 
-    public boolean isDraw(final GameTable gameTable) {
+    public boolean allCellsFilled(final GameTable gameTable) {
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
                 if (gameTable.isEmpty(new Cell(i, k))) {

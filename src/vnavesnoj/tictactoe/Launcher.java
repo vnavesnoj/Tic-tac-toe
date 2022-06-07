@@ -26,7 +26,7 @@ public final class Launcher {
 
     public static void main(final String[] args) {
         Game game = new Game(
-                new DataPrinter(), new ComputerTurn(), new UserTurn(), new WinnerVerifier(), new DrawVerifier());
+                new DataPrinter(), new ComputerTurn(), new UserTurn(), new WinnerVerifier(), new CellVerifier());
         game.play();
     }
 }
