@@ -16,15 +16,23 @@
 
 package vnavesnoj.tictactoe.component;
 
+import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class DrowVerifier {
+public class DrawVerifier {
 
     public boolean isDraw(final GameTable gameTable) {
-        return false;
+        for (int i = 0; i < 3; i++) {
+            for (int k = 0; k < 3; k++) {
+                if (gameTable.isEmpty(new Cell(i, k))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
