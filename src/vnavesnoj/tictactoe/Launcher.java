@@ -17,6 +17,7 @@
 package vnavesnoj.tictactoe;
 
 import vnavesnoj.tictactoe.component.*;
+import vnavesnoj.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
 
 /**
  * @author vnavesnoj
@@ -25,7 +26,7 @@ import vnavesnoj.tictactoe.component.*;
 public final class Launcher {
 
     public static void main(final String[] args) {
-        final CellNumberConverter cellNumberConverter = new CellNumberConverter();
+        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
         Game game = new Game(
                 new DataPrinter(cellNumberConverter),
                 new ComputerTurn(),
