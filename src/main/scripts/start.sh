@@ -19,3 +19,6 @@
 #@mail vnavesnoj@gmail.com
 
 java -jar ${project.build.finalName}.jar
+
+echo "Press enter to continue"
+read -r test
