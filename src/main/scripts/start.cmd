@@ -3,4 +3,4 @@
 @rem @mail vnavesnoj@gmail.com
 
 @echo off
-java -jar Tic-tac-toe-1.0-SNAPSHOT.jar
+java -jar ${project.build.finalName}.jar
