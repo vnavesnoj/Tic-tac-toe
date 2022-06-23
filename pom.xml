@@ -21,7 +21,7 @@
 
     <groupId>vnavesnoj</groupId>
     <artifactId>Tic-tac-toe</artifactId>
-    <version>1.0</version>
+    <version>2.0-SNAPSHOT</version>
 
     <name>Tic Tac Toe</name>
     <description>The Tic-tac-toe game using console mode</description>
