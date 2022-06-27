@@ -32,24 +32,27 @@ public class DataPrinter {
     }
 
     public void printMappingTable() {
+        print((i, k) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, k))));
+    }
+
+    public void printGameTable(final GameTable gameTable) {
+        print((i, k) -> String.valueOf(gameTable.getSign(new Cell(i, k))));
+    }
+
+    private void print(final Lambda lambda) {
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int k = 0; k < 3; k++) {
-                System.out.print("| " + cellNumberConverter.toNumber(new Cell(i, k)) + " ");
+                System.out.print("| " + lambda.getValue(i, k) + " ");
             }
             System.out.println("|");
         }
         System.out.println("-------------");
     }
 
-    public void printGameTable(final GameTable gameTable) {
-        for (int i = 0; i < 3; i++) {
-            System.out.println("-------------");
-            for (int k = 0; k < 3; k++) {
-                System.out.print("| " + gameTable.getSign(new Cell(i, k)) + " ");
-            }
-            System.out.println("|");
-        }
-        System.out.println("-------------");
+    @FunctionalInterface
+    private interface Lambda {
+
+        String getValue(int i, int k);
     }
 }
