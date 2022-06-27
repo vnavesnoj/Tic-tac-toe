@@ -18,6 +18,7 @@ package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.model.Sign;
 
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class UserTurn {
             Cell cell = getUserInput();
             if (cell != null) {
                 if (gameTable.isEmpty(cell)) {
-                    gameTable.setSign(cell, 'X');
+                    gameTable.setSign(cell, Sign.X);
                     return;
                 }
                 System.out.println("Can't make a move, because the cell is not free! Try again!");

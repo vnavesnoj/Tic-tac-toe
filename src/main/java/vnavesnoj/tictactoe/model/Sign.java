@@ -14,29 +14,22 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
-
-import vnavesnoj.tictactoe.model.Cell;
-import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Sign;
-
-import java.util.Random;
+package vnavesnoj.tictactoe.model;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class ComputerTurn {
+public enum Sign {
 
-    public void makeMove(final GameTable gameTable) {
-        final Random random = new Random();
-        while (true) {
-            final int randomNumber = random.nextInt(9);
-            final Cell cell = new Cell(2 - (randomNumber / 3), randomNumber % 3);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, Sign.O);
-                return;
-            }
-        }
+    X,
+
+    O,
+
+    EMPTY;
+
+    @Override
+    public String toString() {
+        return this == EMPTY ? " " : name();
     }
 }

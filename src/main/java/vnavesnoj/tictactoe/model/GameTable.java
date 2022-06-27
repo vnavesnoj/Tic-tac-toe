@@ -18,27 +18,29 @@ package vnavesnoj.tictactoe.model;
 
 import java.util.Arrays;
 
+import static vnavesnoj.tictactoe.model.Sign.EMPTY;
+
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
 public class GameTable {
 
-    private final char[][] table = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
+    private final Sign[][] table = {
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY}
     };
 
     public boolean isEmpty(final Cell cell) {
-        return table[cell.getRow()][cell.getCol()] == ' ';
+        return table[cell.getRow()][cell.getCol()] == EMPTY;
     }
 
-    public char getSign(final Cell cell) {
+    public Sign getSign(final Cell cell) {
         return table[cell.getRow()][cell.getCol()];
     }
 
-    public void setSign(final Cell cell, char sign) {
+    public void setSign(final Cell cell, Sign sign) {
         table[cell.getRow()][cell.getCol()] = sign;
     }
 
