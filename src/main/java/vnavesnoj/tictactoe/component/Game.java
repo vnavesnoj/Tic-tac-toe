@@ -56,26 +56,31 @@ public class Game {
             computerTurn.makeMove(gameTable);
             dataPrinter.printGameTable(gameTable);
         }
-        while (true) {
-            userTurn.makeMove(gameTable);
-            dataPrinter.printGameTable(gameTable);
-            if (winnerVerifier.isUserWinner(gameTable)) {
-                System.out.println("You win");
-                break;
-            }
-            if (cellVerifier.allCellsFilled(gameTable)) {
-                System.out.println("DRAW");
-                break;
-            }
-            computerTurn.makeMove(gameTable);
-            dataPrinter.printGameTable(gameTable);
-            if (winnerVerifier.isComputerWinner(gameTable)) {
-                System.out.println("Computer win");
-                break;
-            }
-            if (cellVerifier.allCellsFilled(gameTable)) {
-                System.out.println("DRAW");
-                break;
+        final Turn[] turns = {userTurn, computerTurn};
+        boolean isGameOn = true;
+        while (isGameOn) {
+            for (Turn turn : turns) {
+                turn.makeMove(gameTable);
+                dataPrinter.printGameTable(gameTable);
+                if (turn instanceof UserTurn) {
+                    if (winnerVerifier.isUserWinner(gameTable)) {
+                        System.out.println("You win");
+                        isGameOn = false;
+                        break;
+                    }
+                }
+                if (turn instanceof ComputerTurn) {
+                    if (winnerVerifier.isComputerWinner(gameTable)) {
+                        System.out.println("Computer win");
+                        isGameOn = false;
+                        break;
+                    }
+                }
+                if (cellVerifier.allCellsFilled(gameTable)) {
+                    System.out.println("DRAW");
+                    isGameOn = false;
+                    break;
+                }
             }
         }
         System.out.println("Game over");

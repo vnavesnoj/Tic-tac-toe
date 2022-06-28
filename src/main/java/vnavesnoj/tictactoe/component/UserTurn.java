@@ -26,7 +26,7 @@ import java.util.Scanner;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class UserTurn {
+public class UserTurn implements Turn {
 
     private final CellNumberConverter cellNumberConverter;
 
@@ -34,6 +34,7 @@ public class UserTurn {
         this.cellNumberConverter = cellNumberConverter;
     }
 
+    @Override
     public void makeMove(final GameTable gameTable) {
         while (true) {
             System.out.println("Please type number between 1 and 9: ");
