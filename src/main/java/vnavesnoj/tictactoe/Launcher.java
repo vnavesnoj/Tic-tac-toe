@@ -32,7 +32,8 @@ public final class Launcher {
                 new ComputerTurn(),
                 new UserTurn(cellNumberConverter),
                 new WinnerVerifier(),
-                new CellVerifier());
+                new CellVerifier(),
+                new WinnerAnnouncement());
         game.play();
     }
 }

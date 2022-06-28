@@ -16,14 +16,24 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.model.GameTable;
 import vnavesnoj.tictactoe.model.Player;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface Turn {
+public class WinnerAnnouncement {
 
-    void makeMove(GameTable gameTable, Player player);
+    public void announceWinner(Player player) {
+        if (player.getTurn() instanceof UserTurn) {
+            System.out.println("You win");
+        }
+        if (player.getTurn() instanceof ComputerTurn) {
+            System.out.println("Computer win");
+        }
+    }
+
+    public void announceDraw() {
+        System.out.println("DRAW");
+    }
 }

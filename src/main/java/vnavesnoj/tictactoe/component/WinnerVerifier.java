@@ -18,6 +18,7 @@ package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.model.Player;
 import vnavesnoj.tictactoe.model.Sign;
 
 /**
@@ -26,18 +27,10 @@ import vnavesnoj.tictactoe.model.Sign;
  */
 public class WinnerVerifier {
 
-    public boolean isUserWinner(final GameTable gameTable) {
-        return isWinner(gameTable, Sign.X);
-    }
-
-    public boolean isComputerWinner(final GameTable gameTable) {
-        return isWinner(gameTable, Sign.O);
-    }
-
-    private boolean isWinner(final GameTable gameTable, final Sign sign) {
-        return isWinHorizontally(gameTable, sign) ||
-                isWinVertically(gameTable, sign) ||
-                isWinDiagonally(gameTable, sign);
+    public boolean isWinner(final GameTable gameTable, final Player player) {
+        return isWinHorizontally(gameTable, player.getSign()) ||
+                isWinVertically(gameTable, player.getSign()) ||
+                isWinDiagonally(gameTable, player.getSign());
     }
 
     private boolean isWinHorizontally(final GameTable gameTable, final Sign sign) {

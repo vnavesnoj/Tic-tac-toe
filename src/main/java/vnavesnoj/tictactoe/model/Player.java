@@ -14,16 +14,34 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
+package vnavesnoj.tictactoe.model;
 
-import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Player;
+import vnavesnoj.tictactoe.component.Turn;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface Turn {
+public final class Player {
 
-    void makeMove(GameTable gameTable, Player player);
+    private final Sign sign;
+
+    private final Turn turn;
+
+    public Player(final Sign sign, final Turn turn) {
+        this.sign = sign;
+        this.turn = turn;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public Turn getTurn() {
+        return turn;
+    }
+
+    public void makeMove(final GameTable gameTable) {
+        turn.makeMove(gameTable, this);
+    }
 }

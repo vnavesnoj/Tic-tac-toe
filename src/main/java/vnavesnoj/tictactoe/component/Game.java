@@ -17,8 +17,10 @@
 package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.model.Player;
 
-import java.util.Random;
+import static vnavesnoj.tictactoe.model.Sign.O;
+import static vnavesnoj.tictactoe.model.Sign.X;
 
 /**
  * @author vnavesnoj
@@ -36,48 +38,39 @@ public class Game {
 
     private final CellVerifier cellVerifier;
 
+    private final WinnerAnnouncement winnerAnnouncement;
+
     public Game(final DataPrinter dataPrinter,
                 final ComputerTurn computerTurn,
                 final UserTurn userTurn,
                 final WinnerVerifier winnerVerifier,
-                final CellVerifier cellVerifier) {
+                final CellVerifier cellVerifier,
+                final WinnerAnnouncement winnerAnnouncement) {
         this.dataPrinter = dataPrinter;
         this.computerTurn = computerTurn;
         this.userTurn = userTurn;
         this.winnerVerifier = winnerVerifier;
         this.cellVerifier = cellVerifier;
+        this.winnerAnnouncement = winnerAnnouncement;
     }
 
     public void play() {
         System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9");
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
-        if (new Random().nextBoolean()) {
-            computerTurn.makeMove(gameTable);
-            dataPrinter.printGameTable(gameTable);
-        }
-        final Turn[] turns = {userTurn, computerTurn};
+        final Player[] players = {new Player(X, userTurn), new Player(O, computerTurn)};
         boolean isGameOn = true;
         while (isGameOn) {
-            for (Turn turn : turns) {
-                turn.makeMove(gameTable);
+            for (Player player : players) {
+                player.makeMove(gameTable);
                 dataPrinter.printGameTable(gameTable);
-                if (turn instanceof UserTurn) {
-                    if (winnerVerifier.isUserWinner(gameTable)) {
-                        System.out.println("You win");
-                        isGameOn = false;
-                        break;
-                    }
-                }
-                if (turn instanceof ComputerTurn) {
-                    if (winnerVerifier.isComputerWinner(gameTable)) {
-                        System.out.println("Computer win");
-                        isGameOn = false;
-                        break;
-                    }
+                if (winnerVerifier.isWinner(gameTable, player)) {
+                    winnerAnnouncement.announceWinner(player);
+                    isGameOn = false;
+                    break;
                 }
                 if (cellVerifier.allCellsFilled(gameTable)) {
-                    System.out.println("DRAW");
+                    winnerAnnouncement.announceDraw();
                     isGameOn = false;
                     break;
                 }

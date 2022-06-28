@@ -18,7 +18,7 @@ package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Sign;
+import vnavesnoj.tictactoe.model.Player;
 
 import java.util.Random;
 
@@ -29,13 +29,13 @@ import java.util.Random;
 public class ComputerTurn implements Turn {
 
     @Override
-    public void makeMove(final GameTable gameTable) {
+    public void makeMove(final GameTable gameTable, final Player player) {
         final Random random = new Random();
         while (true) {
             final int randomNumber = random.nextInt(9);
             final Cell cell = new Cell(2 - (randomNumber / 3), randomNumber % 3);
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, Sign.O);
+                gameTable.setSign(cell, player.getSign());
                 return;
             }
         }

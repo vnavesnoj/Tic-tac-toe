@@ -18,7 +18,7 @@ package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Sign;
+import vnavesnoj.tictactoe.model.Player;
 
 import java.util.Scanner;
 
@@ -35,13 +35,13 @@ public class UserTurn implements Turn {
     }
 
     @Override
-    public void makeMove(final GameTable gameTable) {
+    public void makeMove(final GameTable gameTable, final Player player) {
         while (true) {
             System.out.println("Please type number between 1 and 9: ");
             Cell cell = getUserInput();
             if (cell != null) {
                 if (gameTable.isEmpty(cell)) {
-                    gameTable.setSign(cell, Sign.X);
+                    gameTable.setSign(cell, player.getSign());
                     return;
                 }
                 System.out.println("Can't make a move, because the cell is not free! Try again!");
