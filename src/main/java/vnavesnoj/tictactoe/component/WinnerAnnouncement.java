@@ -25,12 +25,7 @@ import vnavesnoj.tictactoe.model.Player;
 public class WinnerAnnouncement {
 
     public void announceWinner(Player player) {
-        if (player.getTurn() instanceof UserTurn) {
-            System.out.println("You win");
-        }
-        if (player.getTurn() instanceof ComputerTurn) {
-            System.out.println("Computer win");
-        }
+        System.out.println("'" + player.getSign() + "'" + " win");
     }
 
     public void announceDraw() {
