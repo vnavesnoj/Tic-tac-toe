@@ -18,6 +18,10 @@ package vnavesnoj.tictactoe;
 
 import vnavesnoj.tictactoe.component.*;
 import vnavesnoj.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import vnavesnoj.tictactoe.model.Player;
+
+import static vnavesnoj.tictactoe.model.Sign.O;
+import static vnavesnoj.tictactoe.model.Sign.X;
 
 /**
  * @author vnavesnoj
@@ -29,11 +33,12 @@ public final class Launcher {
         final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
         Game game = new Game(
                 new DataPrinter(cellNumberConverter),
-                new ComputerTurn(),
-                new UserTurn(cellNumberConverter),
+                new Player(X, new UserTurn(cellNumberConverter)),
+                new Player(O, new ComputerTurn()),
                 new WinnerVerifier(),
                 new CellVerifier(),
-                new WinnerAnnouncement());
+                new WinnerAnnouncement(),
+                true);
         game.play();
     }
 }

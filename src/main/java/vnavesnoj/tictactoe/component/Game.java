@@ -19,8 +19,7 @@ package vnavesnoj.tictactoe.component;
 import vnavesnoj.tictactoe.model.GameTable;
 import vnavesnoj.tictactoe.model.Player;
 
-import static vnavesnoj.tictactoe.model.Sign.O;
-import static vnavesnoj.tictactoe.model.Sign.X;
+import java.util.Random;
 
 /**
  * @author vnavesnoj
@@ -30,9 +29,9 @@ public class Game {
 
     private final DataPrinter dataPrinter;
 
-    private final ComputerTurn computerTurn;
+    private final Player player1;
 
-    private final UserTurn userTurn;
+    private final Player player2;
 
     private final WinnerVerifier winnerVerifier;
 
@@ -40,25 +39,32 @@ public class Game {
 
     private final WinnerAnnouncement winnerAnnouncement;
 
+    private final boolean canSecondPlayerMakeFirstMove;
+
     public Game(final DataPrinter dataPrinter,
-                final ComputerTurn computerTurn,
-                final UserTurn userTurn,
+                final Player player1,
+                final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final CellVerifier cellVerifier,
-                final WinnerAnnouncement winnerAnnouncement) {
+                final WinnerAnnouncement winnerAnnouncement, final boolean canSecondPlayerMakeFirstMove) {
         this.dataPrinter = dataPrinter;
-        this.computerTurn = computerTurn;
-        this.userTurn = userTurn;
+        this.player1 = player1;
+        this.player2 = player2;
         this.winnerVerifier = winnerVerifier;
         this.cellVerifier = cellVerifier;
         this.winnerAnnouncement = winnerAnnouncement;
+        this.canSecondPlayerMakeFirstMove = canSecondPlayerMakeFirstMove;
     }
 
     public void play() {
         System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9");
         dataPrinter.printMappingTable();
         final GameTable gameTable = new GameTable();
-        final Player[] players = {new Player(X, userTurn), new Player(O, computerTurn)};
+        if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
+            player2.makeMove(gameTable);
+            dataPrinter.printGameTable(gameTable);
+        }
+        final Player[] players = {player1, player2};
         boolean isGameOn = true;
         while (isGameOn) {
             for (Player player : players) {
