@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe;
-
-import vnavesnoj.tictactoe.component.Game;
-import vnavesnoj.tictactoe.component.GameFactory;
+package vnavesnoj.tictactoe.model;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public final class Launcher {
+public enum PlayerType {
 
-    public static void main(final String[] args) {
-        final GameFactory gameFactory = new GameFactory(args);
-        final Game game = gameFactory.create();
-        game.play();
-    }
+    USER,
+
+    COMPUTER
 }
