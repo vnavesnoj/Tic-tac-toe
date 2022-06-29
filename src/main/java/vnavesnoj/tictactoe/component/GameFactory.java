@@ -16,6 +16,8 @@
 
 package vnavesnoj.tictactoe.component;
 
+import vnavesnoj.tictactoe.component.console.ConsoleDataPrinter;
+import vnavesnoj.tictactoe.component.console.ConsoleUserInputReader;
 import vnavesnoj.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
 import vnavesnoj.tictactoe.model.Player;
 import vnavesnoj.tictactoe.model.PlayerType;
@@ -42,26 +44,29 @@ public class GameFactory {
 
     public Game create() {
         final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
+        final DataPrinter dataPrinter = new ConsoleDataPrinter(cellNumberConverter);
+        final UserInputReader userInputReader = new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
+
         final Player player1;
         if (player1Type == USER) {
-            player1 = new Player(X, new UserTurn(cellNumberConverter));
+            player1 = new Player(X, new UserTurn(userInputReader, dataPrinter));
         } else {
             player1 = new Player(X, new ComputerTurn());
         }
         final Player player2;
         if (player2Type == USER) {
-            player2 = new Player(O, new UserTurn(cellNumberConverter));
+            player2 = new Player(O, new UserTurn(userInputReader, dataPrinter));
         } else {
             player2 = new Player(O, new ComputerTurn());
         }
         boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
-                new DataPrinterImpl(cellNumberConverter),
+                dataPrinter,
                 player1,
                 player2,
                 new WinnerVerifier(),
                 new CellVerifier(),
-                new WinnerAnnouncement(),
+                new WinnerAnnouncement(dataPrinter),
                 canSecondPlayerMakeFirstMove
         );
     }

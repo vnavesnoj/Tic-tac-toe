@@ -24,11 +24,17 @@ import vnavesnoj.tictactoe.model.Player;
  */
 public class WinnerAnnouncement {
 
+    private final DataPrinter dataPrinter;
+
+    public WinnerAnnouncement(final DataPrinter dataPrinter) {
+        this.dataPrinter = dataPrinter;
+    }
+
     public void announceWinner(Player player) {
-        System.out.println("'" + player.getSign() + "'" + " win");
+        dataPrinter.printInfoMessage("'" + player.getSign() + "'" + " win");
     }
 
     public void announceDraw() {
-        System.out.println("DRAW");
+        dataPrinter.printInfoMessage("DRAW");
     }
 }
