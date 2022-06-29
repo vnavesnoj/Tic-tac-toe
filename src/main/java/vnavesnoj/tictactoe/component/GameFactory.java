@@ -16,9 +16,7 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.component.console.ConsoleDataPrinter;
-import vnavesnoj.tictactoe.component.console.ConsoleUserInputReader;
-import vnavesnoj.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import vnavesnoj.tictactoe.component.swing.GameWindow;
 import vnavesnoj.tictactoe.model.Player;
 import vnavesnoj.tictactoe.model.PlayerType;
 
@@ -43,9 +41,10 @@ public class GameFactory {
     }
 
     public Game create() {
-        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
-        final DataPrinter dataPrinter = new ConsoleDataPrinter(cellNumberConverter);
-        final UserInputReader userInputReader = new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
+        final GameWindow gameWindow = new GameWindow();
+        //final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
+        final DataPrinter dataPrinter = gameWindow;//new ConsoleDataPrinter(cellNumberConverter);
+        final UserInputReader userInputReader = gameWindow;//new ConsoleUserInputReader(cellNumberConverter, dataPrinter);
 
         final Player player1;
         if (player1Type == USER) {
