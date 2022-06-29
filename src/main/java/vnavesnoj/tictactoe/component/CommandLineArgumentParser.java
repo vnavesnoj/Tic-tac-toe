@@ -17,6 +17,7 @@
 package vnavesnoj.tictactoe.component;
 
 import vnavesnoj.tictactoe.model.PlayerType;
+import vnavesnoj.tictactoe.model.UserInterface;
 
 import static vnavesnoj.tictactoe.model.PlayerType.COMPUTER;
 import static vnavesnoj.tictactoe.model.PlayerType.USER;
@@ -29,14 +30,15 @@ public class CommandLineArgumentParser {
 
     private final String[] args;
 
-
     public CommandLineArgumentParser(final String[] args) {
         this.args = args;
+
     }
 
-    public PlayerTypes parse() {
+    public GameFeatures parse() {
         PlayerType player1Type = null;
         PlayerType player2Type = null;
+        UserInterface userInterface = null;
         for (final String arg : args) {
             if (USER.name().equalsIgnoreCase(arg) || COMPUTER.name().equalsIgnoreCase(arg)) {
                 if (player1Type == null) {
@@ -46,28 +48,42 @@ public class CommandLineArgumentParser {
                 } else {
                     System.err.println("Unsupported command line argument: '" + arg + "'");
                 }
+            } else if (UserInterface.CONSOLE.name().equalsIgnoreCase(arg) || UserInterface.GUI.name().equalsIgnoreCase(arg)) {
+                if (userInterface == null) {
+                    userInterface = UserInterface.valueOf(arg.toUpperCase());
+                } else {
+                    System.err.println("Unsupported command line argument: '" + arg + "'");
+                }
             } else {
                 System.err.println("Unsupported command line argument: '" + arg + "'");
             }
         }
+        if (userInterface == null) {
+            userInterface = UserInterface.CONSOLE;
+        }
         if (player1Type == null) {
-            return new PlayerTypes(USER, COMPUTER);
+            return new GameFeatures(USER, COMPUTER, userInterface);
         } else if (player2Type == null) {
-            return new PlayerTypes(USER, player1Type);
+            return new GameFeatures(USER, player1Type, userInterface);
         } else {
-            return new PlayerTypes(player1Type, player2Type);
+            return new GameFeatures(player1Type, player2Type, userInterface);
         }
     }
 
-    public static class PlayerTypes {
+    public static class GameFeatures {
 
         private final PlayerType player1Type;
 
         private final PlayerType player2Type;
 
-        private PlayerTypes(final PlayerType player1Type, final PlayerType player2Type) {
+        private final UserInterface userInterface;
+
+        private GameFeatures(final PlayerType player1Type,
+                             final PlayerType player2Type,
+                             final UserInterface userInterface) {
             this.player1Type = player1Type;
             this.player2Type = player2Type;
+            this.userInterface = userInterface;
         }
 
         public PlayerType getPlayer1Type() {
@@ -76,6 +92,10 @@ public class CommandLineArgumentParser {
 
         public PlayerType getPlayer2Type() {
             return player2Type;
+        }
+
+        public UserInterface getUserInterface() {
+            return userInterface;
         }
     }
 }
