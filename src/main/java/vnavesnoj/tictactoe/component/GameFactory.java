@@ -56,7 +56,7 @@ public class GameFactory {
         }
         boolean canSecondPlayerMakeFirstMove = player1Type != player2Type;
         return new Game(
-                new DataPrinter(cellNumberConverter),
+                new DataPrinterImpl(cellNumberConverter),
                 player1,
                 player2,
                 new WinnerVerifier(),

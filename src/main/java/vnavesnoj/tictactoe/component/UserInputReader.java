@@ -16,19 +16,13 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.model.Cell;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface DataPrinter {
+public interface UserInputReader {
 
-    void printInfoMessage(String message);
-
-    void printErrorMessage(String message);
-
-    void printMappingTable();
-
-    void printGameTable(GameTable gameTable);
+    Cell getUserInput();
 }
