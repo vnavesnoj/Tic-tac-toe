@@ -20,4 +20,4 @@
 
 cd "$(dirname "$0")"  || exit
 
-java -jar ${project.build.finalName}-release.jar
+java -jar ${project.build.finalName}-release.jar console user user
