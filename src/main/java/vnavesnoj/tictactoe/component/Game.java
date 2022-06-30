@@ -16,8 +16,8 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Player;
+import vnavesnoj.tictactoe.model.game.GameTable;
+import vnavesnoj.tictactoe.model.game.Player;
 
 import java.util.Random;
 

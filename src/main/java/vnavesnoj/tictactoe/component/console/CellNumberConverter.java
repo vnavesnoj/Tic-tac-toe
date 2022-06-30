@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.model;
+package vnavesnoj.tictactoe.component.console;
+
+import vnavesnoj.tictactoe.model.game.Cell;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public enum Sign {
+public interface CellNumberConverter {
 
-    X,
+    Cell toCell(int number);
 
-    O,
-
-    EMPTY;
-
-    @Override
-    public String toString() {
-        return this == EMPTY ? " " : name();
-    }
+    int toNumber(Cell cell);
 }

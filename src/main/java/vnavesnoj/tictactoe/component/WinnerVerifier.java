@@ -16,10 +16,10 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.model.Cell;
-import vnavesnoj.tictactoe.model.GameTable;
-import vnavesnoj.tictactoe.model.Player;
-import vnavesnoj.tictactoe.model.Sign;
+import vnavesnoj.tictactoe.model.game.Cell;
+import vnavesnoj.tictactoe.model.game.GameTable;
+import vnavesnoj.tictactoe.model.game.Player;
+import vnavesnoj.tictactoe.model.game.Sign;
 
 /**
  * @author vnavesnoj

@@ -14,36 +14,15 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.model;
+package vnavesnoj.tictactoe.model.config;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class Cell {
+public enum UserInterface {
 
-    private final int col;
+    GUI,
 
-    private final int row;
-
-    public Cell(final int row, final int col) {
-        this.col = col;
-        this.row = row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    @Override
-    public String toString() {
-        return "Cell{" +
-                "col=" + col +
-                ", row=" + row +
-                '}';
-    }
+    CONSOLE
 }

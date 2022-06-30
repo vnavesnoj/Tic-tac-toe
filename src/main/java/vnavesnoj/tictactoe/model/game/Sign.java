@@ -14,15 +14,22 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.model;
+package vnavesnoj.tictactoe.model.game;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public enum PlayerType {
+public enum Sign {
 
-    USER,
+    X,
 
-    COMPUTER
+    O,
+
+    EMPTY;
+
+    @Override
+    public String toString() {
+        return this == EMPTY ? " " : name();
+    }
 }

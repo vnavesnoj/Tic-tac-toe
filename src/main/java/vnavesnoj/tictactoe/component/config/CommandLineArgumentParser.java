@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
+package vnavesnoj.tictactoe.component.config;
 
-import vnavesnoj.tictactoe.model.PlayerType;
-import vnavesnoj.tictactoe.model.UserInterface;
+import vnavesnoj.tictactoe.model.config.PlayerType;
+import vnavesnoj.tictactoe.model.config.UserInterface;
 
-import static vnavesnoj.tictactoe.model.PlayerType.COMPUTER;
-import static vnavesnoj.tictactoe.model.PlayerType.USER;
+import static vnavesnoj.tictactoe.model.config.PlayerType.COMPUTER;
+import static vnavesnoj.tictactoe.model.config.PlayerType.USER;
 
 /**
  * @author vnavesnoj

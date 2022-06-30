@@ -19,6 +19,8 @@ package vnavesnoj.tictactoe.component.console;
 import vnavesnoj.tictactoe.component.DataPrinter;
 import vnavesnoj.tictactoe.component.GameOverHandler;
 
+import java.util.Scanner;
+
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
@@ -34,5 +36,6 @@ public class ConsoleGameOverHandler implements GameOverHandler {
     @Override
     public void gameOver() {
         dataPrinter.printInfoMessage("Game over");
+        new Scanner(System.in).nextLine();
     }
 }

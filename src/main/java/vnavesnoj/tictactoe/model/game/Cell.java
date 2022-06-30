@@ -14,24 +14,36 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component.keypad;
-
-import vnavesnoj.tictactoe.component.CellNumberConverter;
-import vnavesnoj.tictactoe.model.Cell;
+package vnavesnoj.tictactoe.model.game;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class DesktopNumericKeypadCellNumberConverter implements CellNumberConverter {
+public class Cell {
 
-    @Override
-    public Cell toCell(final int number) {
-        return new Cell((2 - ((number - 1) / 3)), (number - 1) % 3);
+    private final int col;
+
+    private final int row;
+
+    public Cell(final int row, final int col) {
+        this.col = col;
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
     }
 
     @Override
-    public int toNumber(final Cell cell) {
-        return 7 - 3 * cell.getRow() + cell.getCol();
+    public String toString() {
+        return "Cell{" +
+                "col=" + col +
+                ", row=" + row +
+                '}';
     }
 }

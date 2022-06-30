@@ -17,7 +17,6 @@
 package vnavesnoj.tictactoe;
 
 import vnavesnoj.tictactoe.component.Game;
-import vnavesnoj.tictactoe.component.GameFactory;
 
 /**
  * @author vnavesnoj

@@ -14,24 +14,34 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component.keypad;
+package vnavesnoj.tictactoe.model.game;
 
-import vnavesnoj.tictactoe.component.CellNumberConverter;
-import vnavesnoj.tictactoe.model.Cell;
+import vnavesnoj.tictactoe.component.Turn;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
+public final class Player {
 
-    @Override
-    public Cell toCell(final int number) {
-        return new Cell((number - 1) / 3, (number - 1) % 3);
+    private final Sign sign;
+
+    private final Turn turn;
+
+    public Player(final Sign sign, final Turn turn) {
+        this.sign = sign;
+        this.turn = turn;
     }
 
-    @Override
-    public int toNumber(final Cell cell) {
-        return 3 * cell.getRow() + cell.getCol() + 1;
+    public Sign getSign() {
+        return sign;
+    }
+
+    public Turn getTurn() {
+        return turn;
+    }
+
+    public void makeMove(final GameTable gameTable) {
+        turn.makeMove(gameTable, this);
     }
 }

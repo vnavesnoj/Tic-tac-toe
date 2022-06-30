@@ -19,8 +19,8 @@ package vnavesnoj.tictactoe.component.swing;
 import vnavesnoj.tictactoe.component.DataPrinter;
 import vnavesnoj.tictactoe.component.GameOverHandler;
 import vnavesnoj.tictactoe.component.UserInputReader;
-import vnavesnoj.tictactoe.model.Cell;
-import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.model.game.Cell;
+import vnavesnoj.tictactoe.model.game.GameTable;
 
 import javax.swing.*;
 import java.awt.*;

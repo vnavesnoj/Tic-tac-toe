@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.model;
+package vnavesnoj.tictactoe.component.console.keypad;
+
+import vnavesnoj.tictactoe.component.console.CellNumberConverter;
+import vnavesnoj.tictactoe.model.game.Cell;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public enum UserInterface {
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    GUI,
+    @Override
+    public Cell toCell(final int number) {
+        return new Cell((number - 1) / 3, (number - 1) % 3);
+    }
 
-    CONSOLE
+    @Override
+    public int toNumber(final Cell cell) {
+        return 3 * cell.getRow() + cell.getCol() + 1;
+    }
 }

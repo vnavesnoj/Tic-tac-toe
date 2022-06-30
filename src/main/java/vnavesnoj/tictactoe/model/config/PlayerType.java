@@ -14,17 +14,15 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
-
-import vnavesnoj.tictactoe.model.Cell;
+package vnavesnoj.tictactoe.model.config;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface CellNumberConverter {
+public enum PlayerType {
 
-    Cell toCell(int number);
+    USER,
 
-    int toNumber(Cell cell);
+    COMPUTER
 }

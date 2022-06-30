@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
+package vnavesnoj.tictactoe;
 
+import vnavesnoj.tictactoe.component.*;
+import vnavesnoj.tictactoe.component.config.CommandLineArgumentParser;
+import vnavesnoj.tictactoe.component.console.CellNumberConverter;
 import vnavesnoj.tictactoe.component.console.ConsoleDataPrinter;
 import vnavesnoj.tictactoe.component.console.ConsoleGameOverHandler;
 import vnavesnoj.tictactoe.component.console.ConsoleUserInputReader;
-import vnavesnoj.tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import vnavesnoj.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import vnavesnoj.tictactoe.component.swing.GameWindow;
-import vnavesnoj.tictactoe.model.Player;
-import vnavesnoj.tictactoe.model.PlayerType;
-import vnavesnoj.tictactoe.model.UserInterface;
+import vnavesnoj.tictactoe.model.config.PlayerType;
+import vnavesnoj.tictactoe.model.config.UserInterface;
+import vnavesnoj.tictactoe.model.game.Player;
 
-import static vnavesnoj.tictactoe.model.PlayerType.USER;
-import static vnavesnoj.tictactoe.model.Sign.O;
-import static vnavesnoj.tictactoe.model.Sign.X;
+import static vnavesnoj.tictactoe.model.config.PlayerType.USER;
+import static vnavesnoj.tictactoe.model.game.Sign.O;
+import static vnavesnoj.tictactoe.model.game.Sign.X;
 
 /**
  * @author vnavesnoj

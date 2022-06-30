@@ -16,10 +16,9 @@
 
 package vnavesnoj.tictactoe.component.console;
 
-import vnavesnoj.tictactoe.component.CellNumberConverter;
 import vnavesnoj.tictactoe.component.DataPrinter;
 import vnavesnoj.tictactoe.component.UserInputReader;
-import vnavesnoj.tictactoe.model.Cell;
+import vnavesnoj.tictactoe.model.game.Cell;
 
 import java.util.Scanner;
 

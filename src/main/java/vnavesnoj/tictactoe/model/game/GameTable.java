@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.model;
+package vnavesnoj.tictactoe.model.game;
 
 import java.util.Arrays;
 
-import static vnavesnoj.tictactoe.model.Sign.EMPTY;
+import static vnavesnoj.tictactoe.model.game.Sign.EMPTY;
 
 /**
  * @author vnavesnoj
