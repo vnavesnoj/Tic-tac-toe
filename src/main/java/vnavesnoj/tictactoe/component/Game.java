@@ -39,6 +39,8 @@ public class Game {
 
     private final WinnerAnnouncement winnerAnnouncement;
 
+    private final GameOverHandler gameOverHandler;
+
     private final boolean canSecondPlayerMakeFirstMove;
 
     public Game(final DataPrinter dataPrinter,
@@ -46,19 +48,21 @@ public class Game {
                 final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final CellVerifier cellVerifier,
-                final WinnerAnnouncement winnerAnnouncement, final boolean canSecondPlayerMakeFirstMove) {
+                final WinnerAnnouncement winnerAnnouncement,
+                final GameOverHandler gameOverHandler,
+                final boolean canSecondPlayerMakeFirstMove) {
         this.dataPrinter = dataPrinter;
         this.player1 = player1;
         this.player2 = player2;
         this.winnerVerifier = winnerVerifier;
         this.cellVerifier = cellVerifier;
         this.winnerAnnouncement = winnerAnnouncement;
+        this.gameOverHandler = gameOverHandler;
         this.canSecondPlayerMakeFirstMove = canSecondPlayerMakeFirstMove;
     }
 
     public void play() {
-        dataPrinter.printInfoMessage("Use the following mapping table to specify a cell using numbers from 1 to 9");
-        dataPrinter.printMappingTable();
+        dataPrinter.printInstruction();
         final GameTable gameTable = new GameTable();
         if (canSecondPlayerMakeFirstMove && new Random().nextBoolean()) {
             player2.makeMove(gameTable);
@@ -82,6 +86,6 @@ public class Game {
                 }
             }
         }
-        dataPrinter.printInfoMessage("Game over");
+        gameOverHandler.gameOver();
     }
 }

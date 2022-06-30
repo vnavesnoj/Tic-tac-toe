@@ -17,6 +17,7 @@
 package vnavesnoj.tictactoe.component.swing;
 
 import vnavesnoj.tictactoe.component.DataPrinter;
+import vnavesnoj.tictactoe.component.GameOverHandler;
 import vnavesnoj.tictactoe.component.UserInputReader;
 import vnavesnoj.tictactoe.model.Cell;
 import vnavesnoj.tictactoe.model.GameTable;
@@ -30,7 +31,7 @@ import java.awt.event.MouseEvent;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public final class GameWindow extends JFrame implements DataPrinter, UserInputReader {
+public final class GameWindow extends JFrame implements DataPrinter, UserInputReader, GameOverHandler {
 
     private static final int GAME_TABLE_SIZE = 3;
 
@@ -94,6 +95,11 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     }
 
     @Override
+    public void printInstruction() {
+        //do nothing
+    }
+
+    @Override
     public void printInfoMessage(final String message) {
         JOptionPane.showMessageDialog(this, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -101,11 +107,6 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     @Override
     public void printErrorMessage(final String message) {
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    @Override
-    public void printMappingTable() {
-        // do nothing
     }
 
     @Override
@@ -128,5 +129,10 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
             }
         }
         return clickedCell;
+    }
+
+    @Override
+    public void gameOver() {
+        System.exit(0);
     }
 }

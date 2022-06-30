@@ -16,19 +16,11 @@
 
 package vnavesnoj.tictactoe.component;
 
-import vnavesnoj.tictactoe.model.GameTable;
-
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface DataPrinter {
+public interface GameOverHandler {
 
-    void printInstruction();
-
-    void printInfoMessage(String message);
-
-    void printErrorMessage(String message);
-
-    void printGameTable(GameTable gameTable);
+    void gameOver();
 }

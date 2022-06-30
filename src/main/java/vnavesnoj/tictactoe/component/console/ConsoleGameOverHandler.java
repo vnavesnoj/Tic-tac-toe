@@ -14,21 +14,25 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
+package vnavesnoj.tictactoe.component.console;
 
-import vnavesnoj.tictactoe.model.GameTable;
+import vnavesnoj.tictactoe.component.DataPrinter;
+import vnavesnoj.tictactoe.component.GameOverHandler;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public interface DataPrinter {
+public class ConsoleGameOverHandler implements GameOverHandler {
 
-    void printInstruction();
+    private final DataPrinter dataPrinter;
 
-    void printInfoMessage(String message);
+    public ConsoleGameOverHandler(final DataPrinter dataPrinter) {
+        this.dataPrinter = dataPrinter;
+    }
 
-    void printErrorMessage(String message);
-
-    void printGameTable(GameTable gameTable);
+    @Override
+    public void gameOver() {
+        dataPrinter.printInfoMessage("Game over");
+    }
 }
