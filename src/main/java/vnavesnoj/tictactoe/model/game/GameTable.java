@@ -36,6 +36,24 @@ public class GameTable {
         return table[cell.getRow()][cell.getCol()] == EMPTY;
     }
 
+    public Cell[] allEmptyCell() {
+        Cell[] emptyCells = new Cell[9];
+        Cell cell;
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int k = 0; k < 3; k++) {
+                cell = new Cell(i, k);
+                if (isEmpty(cell)) {
+                    emptyCells[count++] = cell;
+                }
+            }
+        }
+        final Cell[] temp = new Cell[count];
+        System.arraycopy(emptyCells, 0, temp, 0, count);
+        emptyCells = temp;
+        return emptyCells;
+    }
+
     public Sign getSign(final Cell cell) {
         return table[cell.getRow()][cell.getCol()];
     }
