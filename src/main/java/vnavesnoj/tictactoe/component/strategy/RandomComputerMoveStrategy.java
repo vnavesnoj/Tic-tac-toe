@@ -14,32 +14,31 @@
  * limitations under the License.
  */
 
-package vnavesnoj.tictactoe.component;
+package vnavesnoj.tictactoe.component.strategy;
 
+import vnavesnoj.tictactoe.component.ComputerMoveStrategy;
+import vnavesnoj.tictactoe.model.game.Cell;
 import vnavesnoj.tictactoe.model.game.GameTable;
 import vnavesnoj.tictactoe.model.game.Player;
+
+import java.util.NoSuchElementException;
+import java.util.Random;
 
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class ComputerTurn implements Turn {
-
-    private final ComputerMoveStrategy[] strategies;
-
-    public ComputerTurn(final ComputerMoveStrategy[] strategies) {
-        this.strategies = strategies;
-    }
+public class RandomComputerMoveStrategy implements ComputerMoveStrategy {
 
     @Override
-    public void makeMove(final GameTable gameTable, final Player player) {
-        for (final ComputerMoveStrategy strategy : strategies) {
-            if (strategy.tryToMakeMove(gameTable, player)) {
-                return;
-            }
+    public boolean tryToMakeMove(final GameTable gameTable, final Player player) {
+        final Cell[] emptyCells = gameTable.allEmptyCell();
+        final int numberOfEmptyCells = emptyCells.length;
+        if (numberOfEmptyCells > 0) {
+            gameTable.setSign(emptyCells[new Random().nextInt(numberOfEmptyCells)], player.getSign());
+        } else {
+            throw new NoSuchElementException("There is not empty cell on the game table");
         }
-        throw new IllegalArgumentException(
-                "Game table does not contain empty cells or invalid configuration for the computer move strategies!"
-        );
+        return true;
     }
 }

@@ -23,23 +23,7 @@ import vnavesnoj.tictactoe.model.game.Player;
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
  */
-public class ComputerTurn implements Turn {
+public interface ComputerMoveStrategy {
 
-    private final ComputerMoveStrategy[] strategies;
-
-    public ComputerTurn(final ComputerMoveStrategy[] strategies) {
-        this.strategies = strategies;
-    }
-
-    @Override
-    public void makeMove(final GameTable gameTable, final Player player) {
-        for (final ComputerMoveStrategy strategy : strategies) {
-            if (strategy.tryToMakeMove(gameTable, player)) {
-                return;
-            }
-        }
-        throw new IllegalArgumentException(
-                "Game table does not contain empty cells or invalid configuration for the computer move strategies!"
-        );
-    }
+    boolean tryToMakeMove(GameTable gameTable, Player player);
 }
