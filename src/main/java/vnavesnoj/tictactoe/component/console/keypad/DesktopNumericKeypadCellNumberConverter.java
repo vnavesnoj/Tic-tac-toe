@@ -19,6 +19,8 @@ package vnavesnoj.tictactoe.component.console.keypad;
 import vnavesnoj.tictactoe.component.console.CellNumberConverter;
 import vnavesnoj.tictactoe.model.game.Cell;
 
+import static java.lang.String.format;
+
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
@@ -27,7 +29,12 @@ public class DesktopNumericKeypadCellNumberConverter implements CellNumberConver
 
     @Override
     public Cell toCell(final int number) {
-        return new Cell((2 - ((number - 1) / 3)), (number - 1) % 3);
+        if (number >= 0 && number <= 9) {
+            return new Cell((2 - ((number - 1) / 3)), (number - 1) % 3);
+        }
+        throw new IllegalArgumentException(
+                format("Number parameter must be between '1' and '9'! Current value is '%s'!", number)
+        );
     }
 
     @Override
