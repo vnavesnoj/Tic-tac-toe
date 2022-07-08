@@ -20,6 +20,7 @@ import vnavesnoj.tictactoe.model.game.Cell;
 import vnavesnoj.tictactoe.model.game.GameTable;
 import vnavesnoj.tictactoe.model.game.Player;
 
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 /**
@@ -30,14 +31,12 @@ public class ComputerTurn implements Turn {
 
     @Override
     public void makeMove(final GameTable gameTable, final Player player) {
-        final Random random = new Random();
-        while (true) {
-            final int randomNumber = random.nextInt(9);
-            final Cell cell = new Cell(2 - (randomNumber / 3), randomNumber % 3);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, player.getSign());
-                return;
-            }
+        final Cell[] emptyCells = gameTable.allEmptyCell();
+        final int numberOfEmptyCells = emptyCells.length;
+        if (numberOfEmptyCells > 0) {
+            gameTable.setSign(emptyCells[new Random().nextInt(numberOfEmptyCells)], player.getSign());
+        } else {
+            throw new NoSuchElementException("There is not empty cell on the game table");
         }
     }
 }
