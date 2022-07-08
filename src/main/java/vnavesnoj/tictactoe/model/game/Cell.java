@@ -16,6 +16,8 @@
 
 package vnavesnoj.tictactoe.model.game;
 
+import static java.lang.String.format;
+
 /**
  * @author vnavesnoj
  * @link vnavesnoj@gmail.com
@@ -27,8 +29,15 @@ public class Cell {
     private final int row;
 
     public Cell(final int row, final int col) {
-        this.col = col;
-        this.row = row;
+        if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
+            this.row = row;
+            this.col = col;
+        } else {
+            throw new IllegalArgumentException(
+                    format("Row and column parameters must be between '0' and '2'! " +
+                            "Current row is '%s', current column is '%s'!", row, col)
+            );
+        }
     }
 
     public int getCol() {
