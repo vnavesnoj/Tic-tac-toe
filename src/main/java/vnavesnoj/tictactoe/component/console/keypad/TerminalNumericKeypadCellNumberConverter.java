@@ -29,7 +29,7 @@ public class TerminalNumericKeypadCellNumberConverter implements CellNumberConve
 
     @Override
     public Cell toCell(final int number) {
-        if (number >= 0 && number <= 9) {
+        if (number >= 1 && number <= 9) {
             return new Cell((number - 1) / 3, (number - 1) % 3);
         }
         throw new IllegalArgumentException(
