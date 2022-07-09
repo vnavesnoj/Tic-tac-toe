@@ -24,9 +24,9 @@ import static java.lang.String.format;
  */
 public class Cell {
 
-    private final int col;
-
     private final int row;
+
+    private final int col;
 
     public Cell(final int row, final int col) {
         if (row >= 0 && row <= 2 && col >= 0 && col <= 2) {
