@@ -28,6 +28,17 @@ public enum Sign {
 
     EMPTY;
 
+
+    public Sign oppositeSign() {
+        if (this == O) {
+            return X;
+        }
+        if (this == X) {
+            return O;
+        }
+        throw new IllegalStateException("Empty value does not have an opposite one");
+    }
+
     @Override
     public String toString() {
         return this == EMPTY ? " " : name();

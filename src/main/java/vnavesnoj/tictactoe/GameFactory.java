@@ -24,6 +24,7 @@ import vnavesnoj.tictactoe.component.console.ConsoleGameOverHandler;
 import vnavesnoj.tictactoe.component.console.ConsoleUserInputReader;
 import vnavesnoj.tictactoe.component.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import vnavesnoj.tictactoe.component.strategy.FirstMoveToTheCenterComputerMoveStrategy;
+import vnavesnoj.tictactoe.component.strategy.PreventUserWinComputerMoveStrategy;
 import vnavesnoj.tictactoe.component.strategy.RandomComputerMoveStrategy;
 import vnavesnoj.tictactoe.component.strategy.WinNowComputerMoveStrategy;
 import vnavesnoj.tictactoe.component.swing.GameWindow;
@@ -58,6 +59,7 @@ public class GameFactory {
         final ComputerMoveStrategy[] strategies = {
                 new FirstMoveToTheCenterComputerMoveStrategy(),
                 new WinNowComputerMoveStrategy(),
+                new PreventUserWinComputerMoveStrategy(),
                 new RandomComputerMoveStrategy()
         };
         final CellNumberConverter cellNumberConverter;
