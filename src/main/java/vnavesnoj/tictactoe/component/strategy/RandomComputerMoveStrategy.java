@@ -20,6 +20,7 @@ import vnavesnoj.tictactoe.component.ComputerMoveStrategy;
 import vnavesnoj.tictactoe.model.game.Cell;
 import vnavesnoj.tictactoe.model.game.GameTable;
 import vnavesnoj.tictactoe.model.game.Player;
+import vnavesnoj.tictactoe.model.game.Sign;
 
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -32,7 +33,7 @@ public class RandomComputerMoveStrategy implements ComputerMoveStrategy {
 
     @Override
     public boolean tryToMakeMove(final GameTable gameTable, final Player player) {
-        final Cell[] emptyCells = gameTable.allEmptyCell();
+        final Cell[] emptyCells = gameTable.getAllCellsWithTargetSign(Sign.EMPTY);
         final int numberOfEmptyCells = emptyCells.length;
         if (numberOfEmptyCells > 0) {
             gameTable.setSign(emptyCells[new Random().nextInt(numberOfEmptyCells)], player.getSign());
