@@ -16,6 +16,7 @@
 
 package vnavesnoj.tictactoe.component.config;
 
+import vnavesnoj.tictactoe.model.config.ComputerComplexity;
 import vnavesnoj.tictactoe.model.config.PlayerType;
 import vnavesnoj.tictactoe.model.config.UserInterface;
 
@@ -39,6 +40,7 @@ public class CommandLineArgumentParser {
         PlayerType player1Type = null;
         PlayerType player2Type = null;
         UserInterface userInterface = null;
+        ComputerComplexity computerComplexity = null;
         for (final String arg : args) {
             if (USER.name().equalsIgnoreCase(arg) || COMPUTER.name().equalsIgnoreCase(arg)) {
                 if (player1Type == null) {
@@ -61,6 +63,17 @@ public class CommandLineArgumentParser {
                             arg, userInterface
                     );
                 }
+            } else if ((ComputerComplexity.LEVEL1.name().equalsIgnoreCase(arg) ||
+                    ComputerComplexity.LEVEL2.name().equalsIgnoreCase(arg) ||
+                    ComputerComplexity.LEVEL3.name().equalsIgnoreCase(arg))) {
+                if (computerComplexity == null) {
+                    computerComplexity = ComputerComplexity.valueOf(arg.toUpperCase());
+                } else {
+                    System.err.printf(
+                            "Invalid command line argument: '%s', because computer complexity already set: '%s'%n",
+                            arg, computerComplexity
+                    );
+                }
             } else {
                 System.err.printf("Unsupported command line argument: '%s'%n", arg);
             }
@@ -68,12 +81,15 @@ public class CommandLineArgumentParser {
         if (userInterface == null) {
             userInterface = UserInterface.CONSOLE;
         }
+        if (computerComplexity == null) {
+            computerComplexity = ComputerComplexity.LEVEL3;
+        }
         if (player1Type == null) {
-            return new GameFeatures(USER, COMPUTER, userInterface);
+            return new GameFeatures(USER, COMPUTER, userInterface, computerComplexity);
         } else if (player2Type == null) {
-            return new GameFeatures(USER, player1Type, userInterface);
+            return new GameFeatures(USER, player1Type, userInterface, computerComplexity);
         } else {
-            return new GameFeatures(player1Type, player2Type, userInterface);
+            return new GameFeatures(player1Type, player2Type, userInterface, computerComplexity);
         }
     }
 
@@ -85,12 +101,15 @@ public class CommandLineArgumentParser {
 
         private final UserInterface userInterface;
 
+        private final ComputerComplexity computerComplexity;
+
         private GameFeatures(final PlayerType player1Type,
                              final PlayerType player2Type,
-                             final UserInterface userInterface) {
+                             final UserInterface userInterface, final ComputerComplexity computerComplexity) {
             this.player1Type = player1Type;
             this.player2Type = player2Type;
             this.userInterface = userInterface;
+            this.computerComplexity = computerComplexity;
         }
 
         public PlayerType getPlayer1Type() {
@@ -103,6 +122,10 @@ public class CommandLineArgumentParser {
 
         public UserInterface getUserInterface() {
             return userInterface;
+        }
+
+        public ComputerComplexity getComputerComplexity() {
+            return computerComplexity;
         }
     }
 }
