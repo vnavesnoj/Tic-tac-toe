@@ -22,7 +22,6 @@ import vnavesnoj.tictactoe.model.game.GameTable;
 import vnavesnoj.tictactoe.model.game.Player;
 import vnavesnoj.tictactoe.model.game.Sign;
 
-import java.util.NoSuchElementException;
 import java.util.Random;
 
 /**
@@ -37,9 +36,9 @@ public class RandomComputerMoveStrategy implements ComputerMoveStrategy {
         final int numberOfEmptyCells = emptyCells.length;
         if (numberOfEmptyCells > 0) {
             gameTable.setSign(emptyCells[new Random().nextInt(numberOfEmptyCells)], player.getSign());
+            return true;
         } else {
-            throw new NoSuchElementException("There is not empty cell on the game table");
+            return false;
         }
-        return true;
     }
 }
